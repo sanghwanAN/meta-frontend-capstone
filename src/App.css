@@ -1,38 +1,237 @@
-.App {
+/* ------------------------------
+   Global Style
+------------------------------ */
+:root {
+  --primary-color: #f4ce14; /* Lemon yellow */
+  --secondary-color: #495e57; /* Olive green */
+  --accent-color: #ee9972; /* Coral */
+
+  --text-dark: #333;
+  --text-light: #fff;
+  --font-primary: "Markazi Text", serif;
+  --font-secondary: "Karla", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-secondary);
+  color: var(--text-dark);
+  background-color: #fafafa;
+  line-height: 1.6;
+}
+
+/* ------------------------------
+   Header & Navigation
+------------------------------ */
+header {
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--primary-color);
+}
+
+/* ------------------------------
+   Hero Section
+------------------------------ */
+section[aria-labelledby="hero-heading"] {
+  text-align: center;
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  padding: 4rem 1rem;
+  border-radius: 0 0 20px 20px;
+}
+
+section[aria-labelledby="hero-heading"] h1 {
+  font-family: var(--font-primary);
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+
+section[aria-labelledby="hero-heading"] h2 {
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+section[aria-labelledby="hero-heading"] p {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+section[aria-labelledby="hero-heading"] button {
+  background-color: var(--primary-color);
+  color: var(--text-dark);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+section[aria-labelledby="hero-heading"] button:hover {
+  background-color: #ffd60a;
+}
+
+section[aria-labelledby="hero-heading"] img {
+  margin-top: 2rem;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ------------------------------
+   Specials Section
+------------------------------ */
+.specials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 3rem 2rem;
+}
+
+.specials article {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.specials img {
+  width: 100%;
+  border-radius: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.specials h3 {
+  margin-top: 1rem;
+  color: var(--secondary-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.specials a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ------------------------------
+   Testimonials Section
+------------------------------ */
+.testimonials {
+  background-color: #fff8e1;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.testimonials article {
+  margin-bottom: 1.5rem;
+}
+
+.testimonials p:first-child {
+  font-style: italic;
+}
+
+/* ------------------------------
+   About Section
+------------------------------ */
+.about {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 2rem;
+  padding: 3rem 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+.about img {
+  flex: 1 1 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.about p {
+  flex: 1 1 300px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* ------------------------------
+   Footer Section
+------------------------------ */
+footer {
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  padding: 2rem;
+  gap: 2rem;
+  text-align: left;
+}
+
+footer h4 {
+  margin-bottom: 0.75rem;
+  color: var(--primary-color);
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer a {
+  color: var(--text-light);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+footer a:hover {
+  color: var(--primary-color);
+}
+
+/* ------------------------------
+   Responsive Design
+------------------------------ */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0.75rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .about {
+    flex-direction: column;
+  }
+
+  section[aria-labelledby="hero-heading"] h1 {
+    font-size: 2.2rem;
   }
 }
