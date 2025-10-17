@@ -1,24 +1,25 @@
-import { useState } from "react";
+/* global fetchAPI, submitAPI */
 
-export default function BookingForm() {
-  const [availableTimes, setAvailableTimes] = useState([
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
-  ]);
+import { useEffect, useState } from "react";
+
+export default function BookingForm({ availableTimes, dispatch, submitForm }) {
   const [date, setDate] = useState("");
-  const [time, setTime] = useState(availableTimes[0] || "");
-  const [guests, setGuests] = useState(2);
+  const [time, setTime] = useState("");
+  const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = { date, time, guests, occasion };
-    console.log("Booking submitted:", payload);
-    alert(`Reserved: ${date} / ${time} for ${guests} guest(s), ${occasion}`);
+    const formData = { date, time, guests, occasion };
+    submitForm(formData);
   };
+
+  const handleDateChange = (e) => {
+    const selectedDate = e.target.value;
+    setDate(selectedDate);
+    dispatch({ date: new Date(selectedDate) });
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -36,7 +37,7 @@ export default function BookingForm() {
         type="date"
         id="res-date"
         value={date}
-        onChange={(e) => setDate(e.target.value)}
+        onChange={handleDateChange}
         required
       />
 
