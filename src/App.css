@@ -237,7 +237,6 @@ footer a:hover {
 }
 
 /* booking */
-/* Booking */
 .booking {
   padding: 2rem 1rem;
 }
@@ -250,18 +249,31 @@ footer a:hover {
   border-radius: 8px;
   border: 1px solid #ddd;
 }
+
+/* 버튼 기본/호버/포커스 */
 .btn-primary {
-  background: var(--primary-color, #f4ce14);
-  color: #222;
-  border: 0;
-  padding: 0.75rem 1rem;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 12px 16px;
   border-radius: 8px;
-  font-weight: 700;
+  transition: background 0.2s ease, filter 0.2s ease;
   cursor: pointer;
 }
-.btn-primary:hover {
+.btn-primary:not(:disabled):hover {
   filter: brightness(1.05);
 }
+.btn-primary:focus-visible {
+  outline: 3px solid #f4ce14; /* 스타일 가이드 포커스 색 */
+  outline-offset: 2px;
+}
+
+.btn-primary:disabled {
+  background: #cdcdcd;
+  cursor: not-allowed;
+  pointer-events: none; /* 호버/클릭 완전 차단 */
+}
+
 .booking-note {
   margin-top: 1.25rem;
   opacity: 0.85;

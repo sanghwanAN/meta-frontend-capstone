@@ -1,18 +1,18 @@
 /* global fetchAPI, submitAPI */
 import { useReducer } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; //  테스트 시 임시 주석 처리
 import BookingForm from "../components/BookingForm";
 
 function updateTimes(state, action) {
   if (action.type === "UPDATE_TIMES") {
-    return window.fetchAPI(action.payload); // ✅ 명시적 window 참조!
+    return fetchAPI(action.payload);
   }
   return state;
 }
 // 초기 상태 함수
 function initializeTimes() {
   const today = new Date();
-  return window.fetchAPI(today); // ✅ 동일하게 수정
+  return fetchAPI(today);
 }
 
 export default function BookingPage() {
