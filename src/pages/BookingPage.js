@@ -1,7 +1,7 @@
 /* global fetchAPI, submitAPI */
 import { useReducer } from "react";
 import { useNavigate } from "react-router-dom"; //  테스트 시 임시 주석 처리
-import BookingForm from "../components/BookingForm";
+import BookingForm from "../components/booking/BookingForm";
 
 function updateTimes(state, action) {
   if (action.type === "UPDATE_TIMES") {
@@ -40,23 +40,25 @@ export default function BookingPage() {
   };
 
   return (
-    <section className="booking">
-      <header className="booking-header">
-        <h1>Reserve a Table</h1>
-        <p>Select your date and time to book a table at Little Lemon.</p>
-      </header>
+    <section className="booking-sec">
+      <div className="booking-sec__inner">
+        <header className="booking-header">
+          <h2 className="booking-sec__tit">Reserve a Table</h2>
+          <p>Select your date and time to book a table at Little Lemon.</p>
+        </header>
 
-      {/* API 연동된 availableTimes 전달 */}
-      <BookingForm
-        availableTimes={availableTimes}
-        dispatch={dispatch}
-        submitForm={submitForm}
-      />
+        {/* API 연동된 availableTimes 전달 */}
+        <BookingForm
+          availableTimes={availableTimes}
+          dispatch={dispatch}
+          submitForm={submitForm}
+        />
 
-      <aside className="booking-note">
-        <h3>Need help?</h3>
-        <p>Call us at (555) 555-5555 or email contact@littlelemon.com</p>
-      </aside>
+        <aside className="booking-note">
+          <h3 className="booking-note__tit">Need help?</h3>
+          <p>Call us at (555) 555-5555 or email contact@littlelemon.com</p>
+        </aside>
+      </div>
     </section>
   );
 }
